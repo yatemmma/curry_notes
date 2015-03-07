@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>curry.fmのネタ帳</h1>
+
+<ul>
+<% @notes.each do |note| %>
+  <li>
+    <span><a href="<%= edit_note_path(note) %>"><%= note.title %></a></span>
+    <span>updated: <%= note.updated_at %></span>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'New Note', new_note_path %>
