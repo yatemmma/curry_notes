@@ -4,7 +4,7 @@
 
 #note_title {
 	float: left;
-	width: 80%;
+	width: 50%;
 	margin-right: 20px;
 }
 
@@ -17,4 +17,8 @@
 #preview {
 	float:left;
 	width: 45%;
+}
+
+.actions input:focus {
+  outline: 1px solid;
 }

@@ -1,14 +1,1 @@
 <%= render 'form' %>
-
-<script>
-$(function(){
-	marked.setOptions({anchorTargetBlank: true});
-  preview();
-	$("#note_body").on("keyup", preview);
-});
-
-function preview() {
-	var text = $("#note_body").val();
-	$("#preview").html(marked(text));
-}
-</script>

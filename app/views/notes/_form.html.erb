@@ -11,8 +11,38 @@
     </div>
   <% end %>
 
-  <%= f.text_field :title %>
-  <div class="actions clearfix"><%= f.submit %></div>
-  <%= f.text_area :body, {rows:100, cols:100} %>
-  <div id="preview"></div>
+  <%= f.text_field :title, {tabindex:1} %>
+  <div class="actions clearfix"><%= f.submit %> <%= link_to 'Back', notes_path %></div>
+  <%= f.text_area :body, {rows:100, cols:100, tabindex:2} %>
+  <div id="preview" style="display:hidden;"></div>
 <% end %>
+
+<script>
+$(function(){
+  var rendere = new marked.Renderer();
+  rendere.link = function(href, title, text) {
+    var external = /^https?:\/\/.+$/.test(href);
+    var newWindow = external || title === 'newWindow';
+    var out = "<a href=\"" + href + "\"";
+    if (newWindow) {
+      out += ' target="_blank"';
+    }
+    if (title && title !== 'newWindow') {
+      out += " title=\"" + title + "\"";
+    }
+    return out += ">" + text + "</a>";
+  };
+  marked.setOptions({
+    anchorTargetBlank: true,
+    renderer: rendere
+  });
+  preview();
+  $("#preview").fadeIn("slow");
+  $("#note_body").on("keyup", preview);
+});
+
+function preview() {
+  var text = $("#note_body").val();
+  $("#preview").html(marked(text));
+}
+</script>

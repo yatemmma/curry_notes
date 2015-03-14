@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>curry.fmのネタ帳</h1>
+<h1>curry.fmのネタ帳 <%= link_to '+', new_note_path %></h1> 
 
-<ul>
+<table>
+  <tr>
+    <th>title</th>
+    <th>update</th>
+  </tr>
 <% @notes.each do |note| %>
-  <li>
-    <span><a href="<%= edit_note_path(note) %>"><%= note.title %></a></span>
-    <span>updated: <%= note.updated_at %></span>
-  </li>
+  <tr>
+    <td><a href="<%= note_path(note) %>"><%= note.title %></a></td>
+    <td><%= note.updated_at %></td>
+  </tr>
 <% end %>
-</ul>
+</table>
 
-<%= link_to 'New Note', new_note_path %>
+
