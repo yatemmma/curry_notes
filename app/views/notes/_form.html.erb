@@ -15,6 +15,7 @@
   <div class="actions clearfix"><%= f.submit %> <%= link_to 'Back', notes_path %></div>
   <%= f.text_area :body, {rows:100, cols:100, tabindex:2} %>
   <div id="preview" style="display:hidden;"></div>
+  <%= f.hidden_field :lock_version %>
 <% end %>
 
 <script>
