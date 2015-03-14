@@ -7,4 +7,6 @@ class ApplicationController < ActionController::Base
   	:name => ENV['BASIC_AUTH_USERNAME'], 
   	:password => ENV['BASIC_AUTH_PASSWORD']
   ) unless ENV['BASIC_AUTH_USERNAME'].nil?
+
+  $note_title = ENV['NOTE_TITLE'] ||= 'Notes'
 end
